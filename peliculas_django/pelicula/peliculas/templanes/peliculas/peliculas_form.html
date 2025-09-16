@@ -1,0 +1,19 @@
+{% extends 'peliculas/base.html' %}
+
+{% block title %}Agregar Película{% endblock %}
+
+{% block content %}
+<h2>Agregar Película</h2>
+<form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        <div class="mb-3">
+            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+            {{ field|add_class:"form-control" }}
+            {{ field.errors }}
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}

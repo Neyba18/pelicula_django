@@ -1,0 +1,33 @@
+{% extends 'peliculas/base.html' %}
+
+{% block title %}Lista de Películas{% endblock %}
+
+{% block content %}
+<h2>Películas Registradas</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Director</th>
+            <th>Año</th>
+            <th>Descripción</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pelicula in peliculas %}
+        <tr>
+            <td>{{ pelicula.nombre }}</td>
+            <td>{{ pelicula.genero }}</td>
+            <td>{{ pelicula.director }}</td>
+            <td>{{ pelicula.año }}</td>
+            <td>{{ pelicula.descripcion|default:"-" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No hay películas registradas.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
